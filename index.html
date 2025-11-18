@@ -1,231 +1,395 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>资源导航</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人资源导航</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<style>
-:root {
-  --banner-img: url("https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=1500&q=60");
-  --bg: #f5f7fa;
-  --card-bg: #ffffffcc;
-  --text: #2c3e50;
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #8b5cf6;
+            --success: #10b981;
+            --bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --text: #1f2937;
+            --text-light: #6b7280;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --radius: 16px;
+        }
 
-  --btn-bg: #eef2f6;
-  --btn-hover: #e3e8ef;
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--bg);
+            min-height: 100vh;
+            color: var(--text);
+            line-height: 1.6;
+        }
 
-  --copy-bg: #f1f2f4;
-  --copy-hover: #e7e8ea;
+        header {
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 60px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
 
-  --radius: 14px;
-  --shadow: 0 4px 12px rgba(0,0,0,0.06);
-  --max-width: 900px;
-}
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=1500&q=60') center/cover;
+            opacity: 0.3;
+            z-index: -1;
+        }
 
-*{margin:0;padding:0;box-sizing:border-box;}
+        header h1 {
+            font-size: 3rem;
+            color: white;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            animation: fadeInDown 0.8s ease-out;
+        }
 
-body{
-  font-family: "Inter","PingFang SC","Segoe UI",sans-serif;
-  background:var(--bg);
-  color:var(--text);
-}
+        main {
+            max-width: 1200px;
+            margin: -30px auto 0;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 1;
+        }
 
-/* 顶部横幅 */
-header{
-  height:180px;
-  background-image:var(--banner-img);
-  background-size:cover;
-  background-position:center;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-header h1{
-  color:white;
-  font-size:2rem;
-  text-shadow:0 4px 10px rgba(0,0,0,0.35);
-}
+        .section-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
 
-main{
-  max-width:var(--max-width);
-  margin:0 auto;
-  padding:24px 16px;
-}
+        section {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeInUp 0.6s ease-out;
+        }
 
-section{
-  background:var(--card-bg);
-  backdrop-filter:blur(6px);
-  border-radius:var(--radius);
-  padding:20px;
-  margin-bottom:26px;
-  box-shadow:var(--shadow);
-}
+        section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
 
-h2{
-  font-size:1.2rem;
-  margin-bottom:12px;
-  display:flex;
-  align-items:center;
-  gap:8px;
-}
+        h2 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--primary);
+            font-weight: 600;
+        }
 
-.row{
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-}
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
 
-a.btn{
-  padding:8px 14px;
-  text-decoration:none;
-  background:var(--btn-bg);
-  border:1px solid #d8dde3;
-  border-radius:8px;
-  color:var(--text);
-  transition:0.2s;
-}
-a.btn:hover{
-  background:var(--btn-hover);
-}
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
 
-/* 复制按钮 */
-.copy{
-  padding:8px 14px;
-  background:var(--copy-bg);
-  border:1px solid #dcdcdc;
-  border-radius:8px;
-  cursor:pointer;
-  transition:0.2s;
-}
-.copy:hover{background:var(--copy-hover);}
-.copy::after{content:" 📋";opacity:0.7;}
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+        }
 
-footer{
-  text-align:center;
-  padding:30px 0;
-  font-size:0.85rem;
-  color:#7f8c8d;
-}
-</style>
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .copy-btn {
+            background: linear-gradient(135deg, var(--success) 0%, #059669 100%);
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+        }
+
+        .copy-btn:hover {
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+        }
+
+        .subtitle {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin: 15px 0 10px;
+            font-weight: 500;
+        }
+
+        /* Toast 通知样式 */
+        .toast {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background: var(--card-bg);
+            padding: 20px 30px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .toast.show {
+            transform: translateX(0);
+        }
+
+        .toast-icon {
+            width: 24px;
+            height: 24px;
+            background: var(--success);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            .section-grid {
+                grid-template-columns: 1fr;
+            }
+            .toast {
+                right: 20px;
+                left: 20px;
+                transform: translateY(-100px);
+            }
+            .toast.show {
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
-
 <body>
+    <header>
+        <h1>个人资源导航</h1>
+    </header>
 
-<header>
-  <h1>个人资源导航</h1>
-</header>
+    <main>
+        <div class="section-grid">
+            <section>
+                <h2>📚 阅读 App</h2>
+                <div class="row">
+                    <a class="btn" href="https://github.com/gedoor/legado/releases/tag/3.25" target="_blank">📥 下载地址</a>
+                </div>
+                <p class="subtitle">订阅源：</p>
+                <div class="row">
+                    <a class="btn" href="https://yuedu.miaogongzi.net/" target="_blank">📘 喵公子</a>
+                    <a class="btn" href="https://mzrjk.top/" target="_blank">📘 源合集</a>
+                    <a class="btn" href="https://www.yckceo.com/" target="_blank">📘 源仓库</a>
+                </div>
+            </section>
 
-<main>
+            <section>
+                <h2>📺 TVbox</h2>
+                <div class="row">
+                    <a class="btn" href="https://github.com/takagen99/Box/releases" target="_blank">📥 takagen99 版</a>
+                    <a class="btn" href="https://github.com/q215613905/TVBoxOSCRelease/releases/tag/20251016-2311" target="_blank">📥 q215613905 版</a>
+                </div>
+                <p class="subtitle">订阅源：</p>
+                <div class="row">
+                    <button class="btn copy-btn" data-link="https://www.xn--sss604efuw.com/">🧭 TVbox 订阅源</button>
+                </div>
+            </section>
 
-<section>
-  <h2>📚 阅读 App</h2>
-  <div class="row">
-    <a class="btn" href="https://github.com/gedoor/legado/releases/tag/3.25" target="_blank">📥 下载地址</a>
-  </div>
-  <p style="margin-top:10px;font-size:0.9rem;">订阅源：</p>
-  <div class="row">
-    <a class="btn" href="https://yuedu.miaogongzi.net/" target="_blank">📘 喵公子</a>
-    <a class="btn" href="https://mzrjk.top/" target="_blank">📘 源合集</a>
-    <a class="btn" href="https://www.yckceo.com/" target="_blank">📘 源仓库</a>
-  </div>
-</section>
+            <section>
+                <h2>🚀 代理软件</h2>
+                <div class="row">
+                    <a class="btn" href="https://github.com/2dust/v2rayN/releases/tag/7.15.7" target="_blank">📥 v2rayN</a>
+                    <a class="btn" href="https://github.com/KaringX/karing/releases" target="_blank">📥 Karing</a>
+                    <a class="btn" href="https://github.com/GFW-knocker/MahsaNG/releases" target="_blank">📥 MahasaNG</a>
+                </div>
+            </section>
 
-<section>
-  <h2>📺 TVbox</h2>
-  <div class="row">
-    <a class="btn" href="https://github.com/takagen99/Box/releases" target="_blank">📥 takagen99 版</a>
-    <a class="btn" href="https://github.com/q215613905/TVBoxOSCRelease/releases/tag/20251016-2311" target="_blank">📥 q215613905 版</a>
-  </div>
+            <section>
+                <h2>🌐 节点订阅</h2>
+                <div class="row">
+                    <button class="btn copy-btn" data-link="https://zjy.serv00.net/index.txt">🛜 顺风</button>
+                    <button class="btn copy-btn" data-link="https://raw.githubusercontent.com/medicandong/mibei/refs/heads/main/subscription.txt">🛜 米贝</button>
+                </div>
+                <p class="subtitle">订阅器：</p>
+                <div class="row">
+                    <button class="btn copy-btn" data-link="zrf.zrf.me">🔧 周润发</button>
+                    <button class="btn copy-btn" data-link="sub.keaeye.icu">🔧 文烨</button>
+                    <button class="btn copy-btn" data-link="sub.mot.cloudns.biz">🔧 Kristi</button>
+                    <button class="btn copy-btn" data-link="cfsub.cfcdn.xx.kg">🔧 青云志</button>
+                    <button class="btn copy-btn" data-link="sub.lzjbaby.com">🔧 辣子鸡</button>
+                </div>
+            </section>
 
-  <p style="margin-top:10px;font-size:0.9rem;">订阅源：</p>
-  <div class="row">
-    <span class="copy" data-link="https://www.xn--sss604efuw.com/">🧭 TVbox 订阅源</a>
-  </div>
-</section>
+            <section>
+                <h2>🛡️ 去广告规则</h2>
+                <div class="row">
+                    <button class="btn copy-btn" data-link="https://raw.githubusercontent.com/AdguardTeam/AdGuardSDNSFilter/master/configuration.json">🛡️ AdGuard SDNS</button>
+                    <button class="btn copy-btn" data-link="https://anti-ad.net/anti-ad-sing-box.srs">🛡️ Anti-AD sing-box</button>
+                </div>
+            </section>
 
-<section>
-  <h2>🚀 代理软件</h2>
-  <div class="row">
-    <a class="btn" href="https://github.com/2dust/v2rayN/releases/tag/7.15.7" target="_blank">📥 v2rayN</a>
-    <a class="btn" href="https://github.com/KaringX/karing/releases" target="_blank">📥 Karing</a>
-    <a class="btn" href="https://github.com/GFW-knocker/MahsaNG/releases" target="_blank">📥 MahasaNG</a>
-  </div>
-</section>
+            <section>
+                <h2>🐵 油猴脚本</h2>
+                <div class="row">
+                    <a class="btn" href="https://github.com/F9y4ng/GreasyFork-Scripts/raw/master/Google%20%26%20Baidu%20Switcher.user.js" target="_blank">🐵 搜索助手（电脑）</a>
+                    <a class="btn" href="https://raw.githubusercontent.com/medicandong/sousou/refs/heads/main/search.user.js" target="_blank">🐵 搜索助手（手机）</a>
+                    <a class="btn" href="https://www.youxiaohou.com/panlinker.user.js" target="_blank">🐵 网盘直链（电脑）</a>
+                </div>
+                <p class="subtitle">脚本市场：</p>
+                <div class="row">
+                    <a class="btn" href="https://greasyfork.org/zh-CN" target="_blank">🌐 GreasyFork</a>
+                    <a class="btn" href="https://sleazyfork.org/zh-CN" target="_blank">🌐 SleazyFork</a>
+                </div>
+            </section>
 
-<section>
-  <h2>🌐 节点订阅</h2>
-  <div class="row">
-    <span class="copy" data-link="https://zjy.serv00.net/index.txt">🛜 顺风</a>
-    <span class="copy" data-link="https://raw.githubusercontent.com/medicandong/mibei/refs/heads/main/subscription.txt">🛜 米贝</a>
-  </div>
+            <section>
+                <h2>🌍 域名管理</h2>
+                <div class="row">
+                    <a class="btn" href="https://domain.digitalplat.org/" target="_blank">🌐 dpdns.org</a>
+                    <a class="btn" href="https://www.netlib.re/" target="_blank">🌐 netlib.re</a>
+                </div>
+            </section>
 
-  <p style="margin-top:10px;font-size:0.9rem;">订阅器：</p>
-  <div class="row">
-    <span class="copy" data-link="zrf.zrf.me">🔧 周润发</a>
-    <span class="copy" data-link="sub.keaeye.icu">🔧 文烨</a>
-    <span class="copy" data-link="sub.mot.cloudns.biz">🔧 Kristi</a>
-    <span class="copy" data-link="cfsub.cfcdn.xx.kg">🔧 青云志</a>
-    <span class="copy" data-link="sub.lzjbaby.com">🔧 辣子鸡</a>
-  </div>
-</section>
+            <section>
+                <h2>🔗 常用网站</h2>
+                <div class="row">
+                    <a class="btn" href="https://jsnzkpg.github.io/" target="_blank">🌐 裤佬</a>
+                    <a class="btn" href="https://koyso.com" target="_blank">🌐 Koyo</a>
+                    <a class="btn" href="https://www.ahhhhfs.com/about-me/" target="_blank">🌐 A姐</a>
+                    <a class="btn" href="https://www.chgal.com/" target="_blank">🌐 绅士</a>
+                </div>
+            </section>
+        </div>
+    </main>
 
-<section>
-  <h2>🛡️ 去广告规则</h2>
-  <div class="row">
-    <span class="copy" data-link="https://raw.githubusercontent.com/AdguardTeam/AdGuardSDNSFilter/master/configuration.json">🛡️ AdGuard SDNS</a>
-    <span class="copy" data-link="https://anti-ad.net/anti-ad-sing-box.srs">🛡️ Anti-AD sing-box</a>
-  </div>
-</section>
+    <footer>Powered by GitHub Pages</footer>
 
-<section>
-  <h2>🐵 油猴脚本</h2>
-  <div class="row">
-    <a class="btn" href="https://github.com/F9y4ng/GreasyFork-Scripts/raw/master/Google%20%26%20Baidu%20Switcher.user.js" target="_blank">🐵 搜索助手（电脑）</a>
-    <a class="btn" href="https://raw.githubusercontent.com/medicandong/sousou/refs/heads/main/search.user.js" target="_blank">🐵 搜索助手（手机）</a>
-    <a class="btn" href="https://www.youxiaohou.com/panlinker.user.js" target="_blank">🐵 网盘直链（电脑）</a>
-  </div>
+    <!-- Toast 通知 -->
+    <div class="toast" id="toast">
+        <div class="toast-icon">✓</div>
+        <div>
+            <div style="font-weight: 600;">复制成功</div>
+            <div style="font-size: 0.85rem; color: var(--text-light);">链接已复制到剪贴板</div>
+        </div>
+    </div>
 
-  <p style="margin-top:10px;font-size:0.9rem;">脚本市场：</p>
-  <div class="row">
-    <a class="btn" href="https://greasyfork.org/zh-CN" target="_blank">🌐 GreasyFork</a>
-    <a class="btn" href="https://sleazyfork.org/zh-CN" target="_blank">🌐 SleazyFork</a>
-  </div>
-</section>
+    <script>
+        // 复制功能
+        document.querySelectorAll('.copy-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const link = this.getAttribute('data-link');
+                navigator.clipboard.writeText(link).then(() => {
+                    showToast();
+                    
+                    // 按钮反馈
+                    const originalText = this.innerHTML;
+                    this.innerHTML = '✓ 已复制';
+                    this.style.background = 'linear-gradient(135deg, #059669 0%, #047857 100%)';
+                    
+                    setTimeout(() => {
+                        this.innerHTML = originalText;
+                        this.style.background = 'linear-gradient(135deg, var(--success) 0%, #059669 100%)';
+                    }, 2000);
+                });
+            });
+        });
 
-<section>
-  <h2>🌍 域名管理</h2>
-  <div class="row">
-    <a class="btn" href="https://domain.digitalplat.org/" target="_blank">🌐 dpdns.org</a>
-    <a class="btn" href="https://www.netlib.re/" target="_blank">🌐 netlib.re</a>
-  </div>
-</section>
+        // 显示 Toast 通知
+        function showToast() {
+            const toast = document.getElementById('toast');
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
 
-<section>
-  <h2>🔗 常用网站</h2>
-  <div class="row">
-    <a class="btn" href="https://jsnzkpg.github.io/" target="_blank">🌐 裤佬</a>
-    <a class="btn" href="https://koyso.com" target="_blank">🌐 Koyo</a>
-    <a class="btn" href="https://www.ahhhhfs.com/about-me/" target="_blank">🌐 A姐</a>
-    <a class="btn" href="https://www.chgal.com/" target="_blank">🌐 绅士</a>
-  </div>
-</section>
+        // 添加平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
 
-</main>
-
-<footer>Powered by GitHub Pages</footer>
-
-<script>
-document.querySelectorAll('.copy').forEach(el => {
-  el.addEventListener('click', () => {
-    navigator.clipboard.writeText(el.dataset.link);
-    const old = el.textContent;
-    el.textContent = "已复制 ✓";
-    setTimeout(()=>{ el.textContent = old; }, 1000);
-  });
-});
-</script>
-
-
+        // 添加页面加载动画
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                document.body.style.transition = 'opacity 0.5s ease';
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+    </script>
 </body>
 </html>
