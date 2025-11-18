@@ -140,7 +140,7 @@ footer{
 
   <p style="margin-top:10px;font-size:0.9rem;">订阅源：</p>
   <div class="row">
-    <span class="copy" data-link="https://www.xn--sss604efuw.com/">🧭 TVbox 订阅源</span>
+    <span class="copy" data-link="https://www.xn--sss604efuw.com/">🧭 TVbox 订阅源</a>
   </div>
 </section>
 
@@ -156,25 +156,25 @@ footer{
 <section>
   <h2>🌐 节点订阅</h2>
   <div class="row">
-    <span class="copy" data-link="https://zjy.serv00.net/index.txt">🛜 顺风</span>
-    <span class="copy" data-link="https://raw.githubusercontent.com/medicandong/mibei/refs/heads/main/subscription.txt">🛜 米贝</span>
+    <span class="copy" data-link="https://zjy.serv00.net/index.txt">🛜 顺风</a>
+    <span class="copy" data-link="https://raw.githubusercontent.com/medicandong/mibei/refs/heads/main/subscription.txt">🛜 米贝</a>
   </div>
 
   <p style="margin-top:10px;font-size:0.9rem;">订阅器：</p>
   <div class="row">
-    <span class="copy" data-link="zrf.zrf.me">🔧 周润发</span>
-    <span class="copy" data-link="sub.keaeye.icu">🔧 文烨</span>
-    <span class="copy" data-link="sub.mot.cloudns.biz">🔧 Kristi</span>
-    <span class="copy" data-link="cfsub.cfcdn.xx.kg">🔧 青云志</span>
-    <span class="copy" data-link="sub.lzjbaby.com">🔧 辣子鸡</span>
+    <span class="copy" data-link="zrf.zrf.me">🔧 周润发</a>
+    <span class="copy" data-link="sub.keaeye.icu">🔧 文烨</a>
+    <span class="copy" data-link="sub.mot.cloudns.biz">🔧 Kristi</a>
+    <span class="copy" data-link="cfsub.cfcdn.xx.kg">🔧 青云志</a>
+    <span class="copy" data-link="sub.lzjbaby.com">🔧 辣子鸡</a>
   </div>
 </section>
 
 <section>
   <h2>🛡️ 去广告规则</h2>
   <div class="row">
-    <span class="copy" data-link="https://raw.githubusercontent.com/AdguardTeam/AdGuardSDNSFilter/master/configuration.json">🛡️ AdGuard SDNS</span>
-    <span class="copy" data-link="https://anti-ad.net/anti-ad-sing-box.srs">🛡️ Anti-AD sing-box</span>
+    <span class="copy" data-link="https://raw.githubusercontent.com/AdguardTeam/AdGuardSDNSFilter/master/configuration.json">🛡️ AdGuard SDNS</a>
+    <span class="copy" data-link="https://anti-ad.net/anti-ad-sing-box.srs">🛡️ Anti-AD sing-box</a>
   </div>
 </section>
 
@@ -226,235 +226,6 @@ document.querySelectorAll('.copy').forEach(el => {
 });
 </script>
 
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>个人资源导航</title>
-
-<style>
-:root {
-  --banner-img: url("https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=1500&q=60");
-  --bg: #f5f7fa;
-  --card-bg: #ffffffcc;
-  --text: #2c3e50;
-
-  --btn-bg: #eef2f6;
-  --btn-hover: #e3e8ef;
-
-  --copy-bg: #f1f2f4;
-  --copy-hover: #e7e8ea;
-
-  --radius: 14px;
-  --shadow: 0 4px 12px rgba(0,0,0,0.06);
-  --max-width: 900px;
-}
-
-*{margin:0;padding:0;box-sizing:border-box;}
-
-body{
-  font-family: "Inter","PingFang SC","Segoe UI",sans-serif;
-  background:var(--bg);
-  color:var(--text);
-}
-
-/* 顶部横幅 */
-header{
-  height:180px;
-  background-image:var(--banner-img);
-  background-size:cover;
-  background-position:center;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-header h1{
-  color:white;
-  font-size:2rem;
-  text-shadow:0 4px 10px rgba(0,0,0,0.35);
-}
-
-main{
-  max-width:var(--max-width);
-  margin:0 auto;
-  padding:24px 16px;
-}
-
-section{
-  background:var(--card-bg);
-  backdrop-filter:blur(6px);
-  border-radius:var(--radius);
-  padding:20px;
-  margin-bottom:26px;
-  box-shadow:var(--shadow);
-}
-
-h2{
-  font-size:1.2rem;
-  margin-bottom:12px;
-  display:flex;
-  align-items:center;
-  gap:8px;
-}
-
-.row{
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-}
-
-a.btn{
-  padding:8px 14px;
-  text-decoration:none;
-  background:var(--btn-bg);
-  border:1px solid #d8dde3;
-  border-radius:8px;
-  color:var(--text);
-  transition:0.2s;
-}
-a.btn:hover{
-  background:var(--btn-hover);
-}
-
-/* 复制按钮 */
-.copy{
-  padding:8px 14px;
-  background:var(--copy-bg);
-  border:1px solid #dcdcdc;
-  border-radius:8px;
-  cursor:pointer;
-  transition:0.2s;
-}
-.copy:hover{background:var(--copy-hover);}
-.copy::after{content:" 📋";opacity:0.7;}
-
-footer{
-  text-align:center;
-  padding:30px 0;
-  font-size:0.85rem;
-  color:#7f8c8d;
-}
-</style>
-</head>
-
-<body>
-
-<header>
-  <h1>个人资源导航</h1>
-</header>
-
-<main>
-
-<section>
-  <h2>📚 阅读 App</h2>
-  <div class="row">
-    <a class="btn" href="https://github.com/gedoor/legado/releases/tag/3.25" target="_blank">📥 下载地址</a>
-  </div>
-  <p style="margin-top:10px;font-size:0.9rem;">订阅源：</p>
-  <div class="row">
-    <a class="btn" href="https://yuedu.miaogongzi.net/" target="_blank">📘 喵公子</a>
-    <a class="btn" href="https://mzrjk.top/" target="_blank">📘 源合集</a>
-    <a class="btn" href="https://www.yckceo.com/" target="_blank">📘 源仓库</a>
-  </div>
-</section>
-
-<section>
-  <h2>📺 TVbox</h2>
-  <div class="row">
-    <a class="btn" href="https://github.com/takagen99/Box/releases" target="_blank">📥 takagen99 版</a>
-    <a class="btn" href="https://github.com/q215613905/TVBoxOSCRelease/releases/tag/20251016-2311" target="_blank">📥 q215613905 版</a>
-  </div>
-
-  <p style="margin-top:10px;font-size:0.9rem;">订阅源：</p>
-  <div class="row">
-    <span class="copy" data-link="https://www.xn--sss604efuw.com/">🧭 TVbox 订阅源</span>
-  </div>
-</section>
-
-<section>
-  <h2>🚀 代理软件</h2>
-  <div class="row">
-    <a class="btn" href="https://github.com/2dust/v2rayN/releases/tag/7.15.7" target="_blank">📥 v2rayN</a>
-    <a class="btn" href="https://github.com/KaringX/karing/releases" target="_blank">📥 Karing</a>
-    <a class="btn" href="https://github.com/GFW-knocker/MahsaNG/releases" target="_blank">📥 MahasaNG</a>
-  </div>
-</section>
-
-<section>
-  <h2>🌐 节点订阅</h2>
-  <div class="row">
-    <span class="copy" data-link="https://zjy.serv00.net/index.txt">🛜 顺风</span>
-    <span class="copy" data-link="https://raw.githubusercontent.com/medicandong/mibei/refs/heads/main/subscription.txt">🛜 米贝</span>
-  </div>
-
-  <p style="margin-top:10px;font-size:0.9rem;">订阅器：</p>
-  <div class="row">
-    <span class="copy" data-link="zrf.zrf.me">🔧 周润发</span>
-    <span class="copy" data-link="sub.keaeye.icu">🔧 文烨</span>
-    <span class="copy" data-link="sub.mot.cloudns.biz">🔧 Kristi</span>
-    <span class="copy" data-link="cfsub.cfcdn.xx.kg">🔧 青云志</span>
-    <span class="copy" data-link="sub.lzjbaby.com">🔧 辣子鸡</span>
-  </div>
-</section>
-
-<section>
-  <h2>🛡️ 去广告规则</h2>
-  <div class="row">
-    <span class="copy" data-link="https://raw.githubusercontent.com/AdguardTeam/AdGuardSDNSFilter/master/configuration.json">🛡️ AdGuard SDNS</span>
-    <span class="copy" data-link="https://anti-ad.net/anti-ad-sing-box.srs">🛡️ Anti-AD sing-box</span>
-  </div>
-</section>
-
-<section>
-  <h2>🐵 油猴脚本</h2>
-  <div class="row">
-    <a class="btn" href="https://github.com/F9y4ng/GreasyFork-Scripts/raw/master/Google%20%26%20Baidu%20Switcher.user.js" target="_blank">🐵 搜索助手（电脑）</a>
-    <a class="btn" href="https://raw.githubusercontent.com/medicandong/sousou/refs/heads/main/search.user.js" target="_blank">🐵 搜索助手（手机）</a>
-    <a class="btn" href="https://www.youxiaohou.com/panlinker.user.js" target="_blank">🐵 网盘直链（电脑）</a>
-  </div>
-
-  <p style="margin-top:10px;font-size:0.9rem;">脚本市场：</p>
-  <div class="row">
-    <a class="btn" href="https://greasyfork.org/zh-CN" target="_blank">🌐 GreasyFork</a>
-    <a class="btn" href="https://sleazyfork.org/zh-CN" target="_blank">🌐 SleazyFork</a>
-  </div>
-</section>
-
-<section>
-  <h2>🌍 域名管理</h2>
-  <div class="row">
-    <a class="btn" href="https://domain.digitalplat.org/" target="_blank">🌐 dpdns.org</a>
-    <a class="btn" href="https://www.netlib.re/" target="_blank">🌐 netlib.re</a>
-  </div>
-</section>
-
-<section>
-  <h2>🔗 常用网站</h2>
-  <div class="row">
-    <a class="btn" href="https://jsnzkpg.github.io/" target="_blank">🌐 裤佬</a>
-    <a class="btn" href="https://koyso.com" target="_blank">🌐 Koyo</a>
-    <a class="btn" href="https://www.ahhhhfs.com/about-me/" target="_blank">🌐 A姐</a>
-    <a class="btn" href="https://www.chgal.com/" target="_blank">🌐 绅士</a>
-  </div>
-</section>
-
-</main>
-
-<footer>Powered by GitHub Pages</footer>
-
-<script>
-document.querySelectorAll('.copy').forEach(el => {
-  el.addEventListener('click', () => {
-    navigator.clipboard.writeText(el.dataset.link);
-    const old = el.textContent;
-    el.textContent = "已复制 ✓";
-    setTimeout(()=>{ el.textContent = old; }, 1000);
-  });
-});
-</script>
 
 </body>
 </html>
